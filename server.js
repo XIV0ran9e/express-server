@@ -1,7 +1,6 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
-
 const port = process.env.PORT || 3000;
 var app = express();
 
@@ -20,11 +19,6 @@ app.use((req,res,next)=>{
   });
   next();
 });
-//123123111111
-// app.use((req,res,next)=>{
-//   res.render('maintenance.hbs');
-// });
-
 
 hbs.registerHelper('getCurrentYear', ()=>{
   return new Date().getFullYear()
@@ -47,6 +41,11 @@ app.get('/about', (req,res) =>{
   });
 });
 
+app.get('/projects',(req,res) =>{
+  res.render('projects.hbs', {
+    pageTitle: "Portfolio"
+  });
+});
 app.get('/bad',(req,res)=>{
  res.send({
    errorMessage:"Error"
